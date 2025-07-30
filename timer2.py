@@ -137,7 +137,7 @@ with col_left:
     btn1, btn2, btn3 = st.columns(3)
     with btn1:
         if not st.session_state.timer_running and not st.session_state.timer_paused:
-            if st.button("▶️", help="시작", type='primary'):
+            if st.button("▶️", help="시작", type='primary',use_container_width=True):
                 st.session_state.timer_running = True
                 st.session_state.start_time = time.time()
                 st.session_state.total_pause_time = 0
@@ -161,7 +161,7 @@ with col_left:
                 st.rerun()
 
     with btn2:
-        if st.button("🔁", help="리셋"):
+        if st.button("🔁", help="리셋",use_container_width=True):
             reset_timer()
             st.session_state.total_seconds = 25 * 60
             st.session_state.remaining_seconds = 25 * 60
@@ -169,7 +169,7 @@ with col_left:
             st.rerun()
 
     with btn3:
-        if st.button("1분 추가", help="1분 추가하기"):
+        if st.button("1분 추가", help="1분 추가하기",use_container_width=True):
             st.session_state.remaining_seconds += 60
             st.session_state.total_seconds += 60
             st.session_state.timer_completed = False
