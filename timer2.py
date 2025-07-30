@@ -240,7 +240,7 @@ with col_right:
                     set_timer_duration(minutes)
                     reset_timer()
                     st.toast(f"{preset} 설정 완료!")
-                    time.sleep(3)
+                    time.sleep(2)
                     st.rerun()
 
     st.divider()
@@ -275,12 +275,12 @@ with col_right:
         st.session_state.remaining_seconds = st.session_state.total_seconds
         reset_timer()
         st.toast("상세 시간 설정 완료!")
-        time.sleep(1.2)
+        time.sleep(1)
         st.rerun()
 
 # 자동 새로고침
 if st.session_state.timer_running and not st.session_state.timer_paused and not st.session_state.timer_completed:
-    time.sleep(1.2)
+    time.sleep(1)
     st.rerun()
 
 # 푸터
