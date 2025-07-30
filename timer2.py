@@ -170,10 +170,26 @@ with col_left:
 
     with btn3:
         if st.button("1분 추가", help="1분 추가하기",use_container_width=True):
-            st.session_state.remaining_seconds += 60
-            st.session_state.total_seconds += 60
-            st.session_state.timer_completed = False
-            st.session_state.show_celebration = False
+            if st.session_state.timer_completed: #완료됐을때
+                현재경과시간 = st.session_state.total_seconds #5초
+                st.session_state.remaining_seconds = 60
+                st.session_state.total_seconds += 60
+                st.session_state.timer_completed = False
+                st.session_state.show_celebration = False
+
+                #현재시간 저장
+                current_time = time.time()
+                st.session_state.timer_running = True
+                st.session_state.timer_paused = False
+                st.session_state.start_time = current_time-현재경과시간
+                st.session_state.total_pause_time = 0
+                
+            else: #실행중일때
+                st.session_state.remaining_seconds += 60
+                st.session_state.total_seconds += 60
+                if st.session_state.timer_completed :
+                    st.session_state.timer_completed = False
+                    st.session_state.show_celebration = False
             st.toast("1분이 추가되었습니다!")
             st.rerun()
 
