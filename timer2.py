@@ -170,8 +170,9 @@ with col_left:
 
     with btn3:
         if st.button("1분 추가", help="1분 추가하기",use_container_width=True):
+            #타이머 종료 후 1분 추가 버튼 눌렀을 때 : 남은 시간 1분에서 감소, 설정시간 1분+5초. 경과시간 5초에서 증가.
             if st.session_state.timer_completed: #완료됐을때
-                현재경과시간 = st.session_state.total_seconds #5초
+                현재경과시간 = st.session_state.total_seconds #예:5초
                 st.session_state.remaining_seconds = 60
                 st.session_state.total_seconds += 60
                 st.session_state.timer_completed = False
@@ -183,7 +184,7 @@ with col_left:
                 st.session_state.timer_paused = False
                 st.session_state.start_time = current_time-현재경과시간
                 st.session_state.total_pause_time = 0
-                
+
             else: #실행중일때
                 st.session_state.remaining_seconds += 60
                 st.session_state.total_seconds += 60
