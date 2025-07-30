@@ -217,7 +217,7 @@ with col_left:
             audio_file_path = background_music[st.session_state.select_music]
             st.audio(audio_file_path, format='audio/mpeg', loop=True, autoplay=st.session_state.music_auto_play)
         except:
-            st.warning("음악 파일을 찾을 수 없습니다.")
+            st.warning(f"음악 파일을 찾을 수 없습니다. : {audio_file_path}")
 
     st.session_state.music_auto_play = st.toggle("음악 자동재생", value=st.session_state.music_auto_play)
 
